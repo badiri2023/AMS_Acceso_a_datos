@@ -18,10 +18,8 @@ public class PR113append {
         // Crida al mètode que afegeix les frases al fitxer
         afegirFrases(camiFitxer);
     }
-
     // Mètode que afegeix les frases al fitxer amb UTF-8 i línia en blanc final
     public static void afegirFrases(String camiFitxer) {
-
         Path path = Paths.get(camiFitxer);
 
         // Llista amb les frases de matrix, pero podemos hacer mas igualmente
@@ -30,6 +28,7 @@ public class PR113append {
                 "You're the one that has to walk through it","");
 
         try {
+            // inoducimos los datos 
             Files.write(path, frases, StandardCharsets.UTF_8,
                         StandardOpenOption.CREATE, StandardOpenOption.APPEND);
           

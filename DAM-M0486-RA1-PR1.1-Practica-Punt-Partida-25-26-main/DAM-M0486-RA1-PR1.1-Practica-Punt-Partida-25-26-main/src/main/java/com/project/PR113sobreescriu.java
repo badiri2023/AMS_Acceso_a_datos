@@ -30,12 +30,9 @@ public class PR113sobreescriu {
                 "You're the one that has to walk through it Arriba espanya","");
 
         try {
-            if (path.getParent() != null) {
-                Files.createDirectories(path.getParent());
-            }
 
             Files.write(path, frases, StandardCharsets.UTF_8,
-                        StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
             System.out.println("Frases escrites sobreescrivint fitxer.");
         } catch (IOException e) {

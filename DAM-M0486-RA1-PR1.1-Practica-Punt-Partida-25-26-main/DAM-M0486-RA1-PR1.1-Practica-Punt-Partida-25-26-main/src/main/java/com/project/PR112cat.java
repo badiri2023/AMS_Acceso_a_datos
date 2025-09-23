@@ -24,28 +24,23 @@ public class PR112cat {
     public static void mostrarContingutArxiu(String rutaArxiu) {
 
         Path path = Paths.get(rutaArxiu);
-
+        // Hacemos comprobacion de que se ha introducido direccion de un documento en vez de fichero
         if(Files.isDirectory(path)){
             System.out.println("El path no correspon a un arxiu, sino a una carpeta.");
             return;
         }else if(Files.isRegularFile(path)){
             System.out.println("Leyendo Datos...");
             try (BufferedReader br = Files.newBufferedReader(path, java.nio.charset.StandardCharsets.UTF_8)) {
-            String linia;
-            while ((linia = br.readLine()) != null) {
+                String linia;
+                while ((linia = br.readLine()) != null) {
                 System.out.println(linia);
             }
-        // tiramos el cathc para las excepciones durante la lectura del archivo
+            // tiramos el cathc para las excepciones durante la lectura del archivo
             } catch (IOException e) {
                 System.out.println("No hauria de fallar amb una excepció: " + e.getMessage());
             }
-
         }else {
         System.out.println("El fitxer no existeix o no es accessible.");
         }
-
-
-
-
     }
 }

@@ -30,7 +30,8 @@ public class PR114linies {
                 numeros.add(String.valueOf(numero));
             }
          try  {
-            Files.write(path, numeros, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.write(path, numeros, StandardCharsets.UTF_8,
+            StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 
             System.out.println("Fitxer creat amb 10 números aleatoris.");
           

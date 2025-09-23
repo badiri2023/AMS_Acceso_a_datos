@@ -16,8 +16,7 @@ public class PR111Files {
             // creamos la carpeta
             Path carpeta = Paths.get(camiFitxer,"myFiles");
             Files.createDirectories(carpeta);
-            System.out.println("Carpeta creada: " + carpeta);
-            //-------------------------------------------------------
+            System.out.println("Fichero creada: " + carpeta);
             //Creamos los dos documentos 1 y 2
             Path file1 = carpeta.resolve("file1.txt");
             Files.createFile(file1);
@@ -25,40 +24,34 @@ public class PR111Files {
 
             Path file2 = carpeta.resolve("file2.txt");
             Files.createFile(file2);
-            System.out.println("Fitxer creat: " + file2.getFileName());
-            //-------------------------------------------------------
+            System.out.println("Documento creado: " + file2.getFileName());
             // cambiamos el nombre del documento, apra ello cpiamos y lo substituimos con e mismo pero difernete nombre
             Path renamedFile = carpeta.resolve("renamedFile.txt");
             // comprobamos que este no existe primero, si no existe, movemos el viejo fihero y lo substitumos por el primero
             if (!Files.exists(renamedFile)) {
                 Files.move(file2, renamedFile);
-                System.out.println("Fitxer renombrat: " + renamedFile.getFileName());
+                System.out.println("Nombre Documento: " + renamedFile.getFileName());
             } else {
                 // sino, simplemente devolvemos que este ya existe
-                System.out.println("No s'ha pogut renombrar: ja existeix un fitxer amb aquest nom.");
+                System.out.println("No se puede crear porque ya existe un docuemnto con el mismo nombre");
             }
-            //-------------------------------------------------------
-            //Parte 4
-
+            //Mostramos el arbol de los ficheros
             for (Path p : (Iterable<Path>) Files.list(carpeta)::iterator) {
                 System.out.println(p.getFileName());
             }
-
-            //-------------------------------------------------------
-            // Parte 5
+            // Borramos archivo
             Files.deleteIfExists(file1);
             System.out.println("Fitxer esborrat: " + file1.getFileName());
 
-            // Parte 6
-            System.out.println("Els arxius de la carpeta són:");
+            // Mostramos de nuevo el arbol
+            System.out.println("Los archivos existentes son: ");
             for (Path p : (Iterable<Path>) Files.list(carpeta)::iterator) {
                 System.out.println(p.getFileName());
             }
 
-
+        //Excepcion si ya existe el documento
         } catch (Exception e) {
-            // Aquesta excepció salta si el fitxer ja existeix
-            System.out.println("El fitxer ja existeix.");
+            System.out.println("Ya existe el Documento.");
 
             }
 }}

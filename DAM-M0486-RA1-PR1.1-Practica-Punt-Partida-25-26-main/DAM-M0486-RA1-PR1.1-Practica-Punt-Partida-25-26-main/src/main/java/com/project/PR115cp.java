@@ -28,24 +28,28 @@ public class PR115cp {
 
     // Mètode per copiar un arxiu de text de l'origen al destí
     public static void copiarArxiu(String rutaOrigen, String rutaDesti) {
+        // designamos una uta origen y otra destino
         Path origen = Paths.get(rutaOrigen);
         Path desti = Paths.get(rutaDesti);
-
+        // primero ahremos varias comprobaciones para asegurar el correcto funcionamiento de mover eldocuemnto
+        // comprobamos que el archivo exista en si para poder moverlo y de que sea un documento valido
         if (!Files.exists(origen) || !Files.isRegularFile(origen)) {
-            System.out.println("Error: L'arxiu origen no existeix o no és un fitxer vàlid.");
+            System.out.println("Archvio inexistente o archivo no valido!!");
             return;
         }
+        // en caso de que exita, este avisara de que sera sobreescrito
         if (Files.exists(desti)) {
-        System.out.println("Avís: L'arxiu de destí ja existeix i serà sobreescrit.");}
+            System.out.println("Avís: L'arxiu de destí ja existeix i serà sobreescrit.");}
 
         try {
+            // guardamos los datos del arhivo para luego escribirlo en uno nuevo con los mismos datos
             List<String> linies = Files.readAllLines(origen, StandardCharsets.UTF_8);
 
             Files.write(desti, linies, StandardCharsets.UTF_8,
                         StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-            System.out.println("Còpia realitzada correctament.");
+            System.out.println("Copiado exitosamente");
         } catch (IOException e) {
-            System.out.println("Error en copiar l'arxiu: " + e.getMessage());
+            System.out.println("Error de duplicado" + e.getMessage());
         }
         }
             

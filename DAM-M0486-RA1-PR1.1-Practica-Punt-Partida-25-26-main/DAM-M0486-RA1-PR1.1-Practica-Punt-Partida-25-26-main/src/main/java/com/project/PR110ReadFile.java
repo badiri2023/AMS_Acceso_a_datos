@@ -28,7 +28,7 @@ public class PR110ReadFile {
         br.close();
             } 
         catch (IOException e) {
-            System.out.println("No hauria de fallar amb una excepció: " + e.getMessage());
+            System.out.println("Error de Docuemnto: " + e.getMessage());
         }
 
 
